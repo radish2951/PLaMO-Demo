@@ -15,6 +15,8 @@ documents = [
     "私はまどマギの方が面白いと思います。"
 ]
 
+print("start embedding")
+
 with torch.inference_mode():
     # 情報検索におけるクエリ文章の埋め込みに関しては、`encode_query` メソッドを用いてください
     # tokenizerも渡す必要があります
@@ -22,6 +24,9 @@ with torch.inference_mode():
     # それ以外の文章に関しては、 `encode_document` メソッドを用いてください
     # 情報検索以外の用途についても、 `encode_document` メソッドを用いてください
     document_embeddings = model.encode_document(documents, tokenizer)
+
+print(query_embedding.shape)
+print(document_embeddings.shape)
 
 # モデルに文章を入力して得られたベクトル間の類似度は、近い文章は高く、遠い文章は低くなります
 # この性質を用いて情報検索などに活用することができます
